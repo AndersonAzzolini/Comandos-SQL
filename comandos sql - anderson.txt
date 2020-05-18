@@ -1,0 +1,82 @@
+
+TABELA ALUNO:
+
+create table aluno(
+id int not null auto_increment,
+nome varchar(100),
+rg varchar(7),
+cpf varchar(11),aluno
+primary key (id)
+);
+
+TABELA TURMA :
+
+create table turma(
+id int not null auto_increment,
+nome varchar(50),
+numero int,
+primary key (id)
+)
+
+TABELA PROFESSOR:
+
+create table professor(
+professorid int not null auto_increment,
+nome varchar(100),
+cpf varchar(11),
+genero varchar (1), 
+primary key (professorid)
+)
+
+TABELA DISCIPLINA:
+
+create table disciplina(
+id int not null auto_increment,
+nome varchar(50),
+professorid int,
+primary key (id),
+constraint  disciplina_professor foreign key (professorid)
+references professor (professorid)
+
+COLUNA REMOVIDA:
+
+alter table professor
+drop column nome
+
+COLUNA ADICIONADA:
+
+alter table professor
+add nome varchar(50)
+
+CRIAR FK:
+
+alter table aluno
+add constraint aluno_disciplina
+foreign key(id) references disciplina(id)
+
+alter table aluno
+add constraint aluno_turma
+foreign key(id) references turma(id)
+
+alter table aluno
+add constraint aluno_professor
+foreign key (id) references professor1(id)
+
+
+
+RENOMEAR TABELA:
+
+alter table professor
+rename to professor1
+
+RENOMEAR COLUNA
+
+alter table professor1
+change column nome nome1
+varchar (45);
+
+ALTERAR TIPO DE UMA COLUNA​:
+
+alter table professor1
+modify column nome1
+varchar (150);
